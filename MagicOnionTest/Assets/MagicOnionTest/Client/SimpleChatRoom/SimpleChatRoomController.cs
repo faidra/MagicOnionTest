@@ -7,11 +7,7 @@ using System.Threading.Tasks;
 public class SimpleChatRoomController : MonoBehaviour, IChatRoomHubReceiver
 {
     [SerializeField]
-    string Host;
-    [SerializeField]
-    int Port;
-    [SerializeField]
-    string Name;
+    SimpleChatLoginContext LoginContext;
 
     IChatRoomHub _client;
 
@@ -20,17 +16,15 @@ public class SimpleChatRoomController : MonoBehaviour, IChatRoomHubReceiver
 
     async void Start()
     {
-        var channel = new Channel(Host, Port, ChannelCredentials.Insecure);
+        var channel = new Channel(LoginContext.Host, LoginContext.Port, ChannelCredentials.Insecure);
         _client = StreamingHubClient.Connect<IChatRoomHub, IChatRoomHubReceiver>(channel, this);
 
         await JoinAsync();
-
-        await SpeakAsync("Hello");
     }
 
     async Task JoinAsync()
     {
-        var result = await _client.JoinAsync(Name);
+        var result = await _client.JoinAsync(LoginContext.UserName);
         Me = result.You;
         foreach (var member in result.OtherMembers)
         {

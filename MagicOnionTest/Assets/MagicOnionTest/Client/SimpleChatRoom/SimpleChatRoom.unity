@@ -223,9 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c80d6ef0a36aa4ca06cd7b2a2fbbe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Host: localhost
-  Port: 9000
-  Name: Test
+  LoginContext: {fileID: 11400000, guid: 949804ecf35397b47b694adfd870047e, type: 2}
 --- !u!4 &396234607
 Transform:
   m_ObjectHideFlags: 0
