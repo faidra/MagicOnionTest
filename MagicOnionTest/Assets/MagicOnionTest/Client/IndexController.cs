@@ -14,6 +14,8 @@ public class IndexController : MonoBehaviour
     InputField PortInputField;
     [SerializeField]
     SimpleChatLoginContext LoginContext;
+    [SerializeField]
+    Button ExitButton;
 
     void Start()
     {
@@ -22,6 +24,7 @@ public class IndexController : MonoBehaviour
         PortInputField.text = LoginContext.Port.ToString();
 
         LoginButton.OnClickAsObservable().Subscribe(_ => Login()).AddTo(this);
+        ExitButton.OnClickAsObservable().Subscribe(_ => Exit()).AddTo(this);
     }
 
     void Login()
@@ -31,5 +34,10 @@ public class IndexController : MonoBehaviour
         LoginContext.Port = int.Parse(PortInputField.text);
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("SimpleChatRoom");
+    }
+
+    void Exit()
+    {
+        Application.Quit();
     }
 }
