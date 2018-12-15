@@ -12,7 +12,7 @@ namespace MagicOnionTestServer.SimpleChat
         ChatRoomMember _self;
         IInMemoryStorage<ChatRoomMember> _members;
 
-        async Task<JoinResult> IChatRoomHub.JoinAsync(string name)
+        public async Task<JoinResult> JoinAsync(string name)
         {
             _self = new ChatRoomMember() { Name = name };
 
@@ -28,13 +28,13 @@ namespace MagicOnionTestServer.SimpleChat
             };
         }
 
-        async Task IChatRoomHub.LeaveAsync()
+        public async Task LeaveAsync()
         {
             await _room.RemoveAsync(Context);
             Broadcast(_room).OnLeave(_self.Id);
         }
 
-        async Task IChatRoomHub.SpeakAsync(string message)
+        public async Task SpeakAsync(string message)
         {
             Broadcast(_room).OnSpeak(_self, message);
         }
