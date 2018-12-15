@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/MagicOnionTest/Client/Index.unity
+    guid: 7714e6fccf8933e4db4bca569c109519
+  - enabled: 1
+    path: Assets/MagicOnionTest/Client/SimpleChatRoom/SimpleChatRoom.unity
+    guid: b2c8e3372771727499a3622097d6db42
   m_configObjects: {}
