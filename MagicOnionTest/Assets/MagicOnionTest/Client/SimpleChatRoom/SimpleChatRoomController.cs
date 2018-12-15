@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using MagicOnion.Client;
 using Grpc.Core;
 using System.Threading.Tasks;
+using UniRx;
 
 public class SimpleChatRoomController : MonoBehaviour, IChatRoomHubReceiver
 {
     [SerializeField]
     SimpleChatLoginContext LoginContext;
+
+    [SerializeField]
+    SimpleChatRoomView View;
 
     IChatRoomHub _client;
 
@@ -20,16 +24,22 @@ public class SimpleChatRoomController : MonoBehaviour, IChatRoomHubReceiver
         _client = StreamingHubClient.Connect<IChatRoomHub, IChatRoomHubReceiver>(channel, this);
 
         await JoinAsync();
+
+        View.OnLogoutClickedAsObservable().Subscribe(_ => LogoutAsync()).AddTo(this);
+        View.OnInputAsObservable().Subscribe(mes => SpeakAsync(mes)).AddTo(this);
     }
 
     async Task JoinAsync()
     {
         var result = await _client.JoinAsync(LoginContext.UserName);
         Me = result.You;
+        View.SetMyName(Me.Name);
+
         foreach (var member in result.OtherMembers)
         {
             OnJoin(member);
         }
+
     }
 
     async Task SpeakAsync(string message)
@@ -37,6 +47,8 @@ public class SimpleChatRoomController : MonoBehaviour, IChatRoomHubReceiver
         if (_client == null) throw new System.Exception("not connected");
 
         await _client.SpeakAsync(message);
+
+        View.ClearInputField();
     }
 
     async void OnDestroy()
@@ -46,7 +58,7 @@ public class SimpleChatRoomController : MonoBehaviour, IChatRoomHubReceiver
 
     void OnJoin(ChatRoomMember member)
     {
-        Debug.LogFormat("Join:{0}", member.Name);
+        View.OnJoin(member);
         Others.Add(member.Id, member);
     }
 
@@ -57,13 +69,19 @@ public class SimpleChatRoomController : MonoBehaviour, IChatRoomHubReceiver
         ChatRoomMember member;
         if (Others.TryGetValue(memberId, out member))
         {
-            Debug.LogFormat("Leave:{0}", member.Name);
+            View.OnLeave(member);
             Others.Remove(memberId);
         }
     }
 
     void IChatRoomHubReceiver.OnSpeak(ChatRoomMember member, string message)
     {
-        Debug.LogFormat("{0}:{1}", member.Name, message);
+        View.OnSpeak(member, message);
+    }
+
+    async Task LogoutAsync()
+    {
+        await _client.LeaveAsync();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Index");
     }
 }
