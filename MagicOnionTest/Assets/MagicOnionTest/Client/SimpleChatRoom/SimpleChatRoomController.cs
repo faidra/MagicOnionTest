@@ -44,6 +44,7 @@ public class SimpleChatRoomController : MonoBehaviour, IChatRoomHubReceiver
 
     async Task SpeakAsync(string message)
     {
+        if (string.IsNullOrEmpty(message)) return;
         if (_client == null) throw new System.Exception("not connected");
 
         await _client.SpeakAsync(message);
