@@ -1,0 +1,511 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MagicOnion</name>
+    </assembly>
+    <members>
+        <member name="T:MagicOnion.ClientStreamingResult`2">
+            <summary>
+            Wrapped AsyncClientStreamingCall.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.ClientStreamingResult`2.ResponseAsync">
+            <summary>
+            Asynchronous call result.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.ClientStreamingResult`2.ResponseHeadersAsync">
+            <summary>
+            Asynchronous access to response headers.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.ClientStreamingResult`2.RequestStream">
+            <summary>
+            Async stream to send streaming requests.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.ClientStreamingResult`2.GetAwaiter">
+            <summary>
+            Allows awaiting this object directly.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MagicOnion.ClientStreamingResult`2.GetStatus">
+            <summary>
+            Gets the call status if the call has already finished.
+            Throws InvalidOperationException otherwise.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.ClientStreamingResult`2.GetTrailers">
+            <summary>
+            Gets the call trailing metadata if the call has already finished.
+            Throws InvalidOperationException otherwise.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.ClientStreamingResult`2.Dispose">
+            <summary>
+            Provides means to cleanup after the call.
+            If the call has already finished normally (request stream has been completed and call result has been received), doesn't do anything.
+            Otherwise, requests cancellation of the call which should terminate all pending async operations associated with the call.
+            As a result, all resources being used by the call should be released eventually.
+            </summary>
+            <remarks>
+            Normally, there is no need for you to dispose the call unless you want to utilize the
+            "Cancel" semantics of invoking <c>Dispose</c>.
+            </remarks>
+        </member>
+        <member name="T:MagicOnion.DuplexStreamingResult`2">
+            <summary>
+            Wrapped AsyncDuplexStreamingCall.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.DuplexStreamingResult`2.ResponseStream">
+            <summary>
+            Async stream to read streaming responses.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.DuplexStreamingResult`2.RequestStream">
+            <summary>
+            Async stream to send streaming requests.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.DuplexStreamingResult`2.ResponseHeadersAsync">
+            <summary>
+            Asynchronous access to response headers.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.DuplexStreamingResult`2.GetStatus">
+            <summary>
+            Gets the call status if the call has already finished.
+            Throws InvalidOperationException otherwise.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.DuplexStreamingResult`2.GetTrailers">
+            <summary>
+            Gets the call trailing metadata if the call has already finished.
+            Throws InvalidOperationException otherwise.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.DuplexStreamingResult`2.Dispose">
+            <summary>
+            Provides means to cleanup after the call.
+            If the call has already finished normally (request stream has been completed and response stream has been fully read), doesn't do anything.
+            Otherwise, requests cancellation of the call which should terminate all pending async operations associated with the call.
+            As a result, all resources being used by the call should be released eventually.
+            </summary>
+            <remarks>
+            Normally, there is no need for you to dispose the call unless you want to utilize the
+            "Cancel" semantics of invoking <c>Dispose</c>.
+            </remarks>
+        </member>
+        <member name="T:MagicOnion.GenerateDefineDebugAttribute">
+            <summary>
+            instruction for moc.exe, surround #if symbol with output code.
+            </summary>
+        </member>
+        <member name="T:MagicOnion.IgnoreAttribute">
+            <summary>
+            Don't register on MagicOnionEngine.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.MetadataExtensions.Get(Grpc.Core.Metadata,System.String,System.Boolean)">
+            <summary>
+            Get metdata entry. If does not exists, return null.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.MetadataExtensions.GetValue(Grpc.Core.Metadata,System.String,System.Boolean)">
+            <summary>
+            Get metdata string value. If does not exists, return null.
+            </summary>
+        </member>
+        <member name="T:MagicOnion.ServerStreamingResult`1">
+            <summary>
+            Wrapped AsyncServerStreamingCall.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.ServerStreamingResult`1.ResponseStream">
+            <summary>
+            Async stream to read streaming responses.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.ServerStreamingResult`1.ResponseHeadersAsync">
+            <summary>
+            Asynchronous access to response headers.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.ServerStreamingResult`1.GetStatus">
+            <summary>
+            Gets the call status if the call has already finished.
+            Throws InvalidOperationException otherwise.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.ServerStreamingResult`1.GetTrailers">
+            <summary>
+            Gets the call trailing metadata if the call has already finished.
+            Throws InvalidOperationException otherwise.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.ServerStreamingResult`1.Dispose">
+            <summary>
+            Provides means to cleanup after the call.
+            If the call has already finished normally (response stream has been fully read), doesn't do anything.
+            Otherwise, requests cancellation of the call which should terminate all pending async operations associated with the call.
+            As a result, all resources being used by the call should be released eventually.
+            </summary>
+            <remarks>
+            Normally, there is no need for you to dispose the call unless you want to utilize the
+            "Cancel" semantics of invoking <c>Dispose</c>.
+            </remarks>
+        </member>
+        <member name="T:MagicOnion.Server.CompositeLogger">
+            <summary>
+            Provides the ILogger to composite multiple loggers.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.Server.CompositeLogger.Loggers">
+            <summary>
+            Gets a collection of ILogger.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.Server.CompositeLogger.Type">
+            <summary>
+            Gets a type for logger.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Server.CompositeLogger.#ctor(Grpc.Core.Logging.ILogger[])">
+            <summary>
+            Creates instance.
+            </summary>
+            <param name="loggers">Composited loggers.</param>
+        </member>
+        <member name="M:MagicOnion.Server.CompositeLogger.#ctor(Grpc.Core.Logging.ILogger[],System.Type)">
+            <summary>
+            Creates instance.
+            </summary>
+            <param name="loggers">Composited loggers.</param>
+            <param name="type">Type for logger.</param>
+        </member>
+        <member name="M:MagicOnion.Server.CompositeLogger.ForType``1">
+            <summary>
+            Gets the ILogger instance for target type.
+            </summary>
+            <typeparam name="T">Target type</typeparam>
+            <returns>ILogger instance.</returns>
+        </member>
+        <member name="M:MagicOnion.Server.CompositeLogger.Debug(System.String)">
+            <summary>
+            Output debug message.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:MagicOnion.Server.CompositeLogger.Debug(System.String,System.Object[])">
+            <summary>
+            Output debug message.
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:MagicOnion.Server.CompositeLogger.Info(System.String)">
+            <summary>
+            Output information message.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:MagicOnion.Server.CompositeLogger.Info(System.String,System.Object[])">
+            <summary>
+            Output information message.
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:MagicOnion.Server.CompositeLogger.Warning(System.String)">
+            <summary>
+            Output warning message.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:MagicOnion.Server.CompositeLogger.Warning(System.String,System.Object[])">
+            <summary>
+            Output warning message.
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:MagicOnion.Server.CompositeLogger.Warning(System.Exception,System.String)">
+            <summary>
+            Output warning message.
+            </summary>
+            <param name="exception"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:MagicOnion.Server.CompositeLogger.Error(System.String)">
+            <summary>
+            Output error message.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:MagicOnion.Server.CompositeLogger.Error(System.String,System.Object[])">
+            <summary>
+            Output error message.
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:MagicOnion.Server.CompositeLogger.Error(System.Exception,System.String)">
+            <summary>
+            Output error message.
+            </summary>
+            <param name="exception"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:MagicOnion.Server.Hubs.HubGroupRepository.AddAsync(System.String)">
+            <summary>
+            Add to group.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Server.Hubs.HubGroupRepository.TryAddAsync(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Add to group and use some limitations.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Server.Hubs.HubGroupRepository.AddAsync``1(System.String,``0)">
+            <summary>
+            Add to group and add data to inmemory storage per group.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Server.Hubs.HubGroupRepository.TryAddAsync``1(System.String,System.Int32,System.Boolean,``0)">
+            <summary>
+            Add to group(with use some limitations) and add data to inmemory storage per group.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Server.Hubs.IGroup.RemoveAsync(MagicOnion.Server.ServiceContext)">
+            <summary>Note: return bool is `removed from parent`.</summary>
+        </member>
+        <member name="M:MagicOnion.Server.Hubs.StreamingHubBase`2.OnConnecting">
+            <summary>
+            Called before connect, instead of constructor.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Server.Hubs.StreamingHubBase`2.OnDisconnected">
+            <summary>
+            Called after disconnect.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.Server.Hubs.StreamingHubContext.Items">
+            <summary>Object storage per invoke.</summary>
+        </member>
+        <member name="P:MagicOnion.Server.Hubs.StreamingHubContext.ServiceContext">
+            <summary>Raw gRPC Context.</summary>
+        </member>
+        <member name="M:MagicOnion.Server.Hubs.StreamingHubFilterAttribute.#ctor(System.Func{MagicOnion.Server.Hubs.StreamingHubContext,System.Threading.Tasks.ValueTask})">
+            <summary>
+            This constructor used by MagicOnionEngine when register handler.
+            </summary>
+        </member>
+        <member name="T:MagicOnion.Server.MagicOnionLogToGrpcLoggerWithDataDump">
+            <summary>
+            Data dump is slightly heavy, recommended to only use debugging.
+            </summary>
+        </member>
+        <member name="T:MagicOnion.Server.MagicOnionLogToGrpcLoggerWithNamedDataDump">
+            <summary>
+            Named data dump is most heavy, recommended to only use debugging.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Server.MagicOnionEngine.BuildServerServiceDefinition(System.Boolean)">
+            <summary>
+            Search MagicOnion service from all assemblies.
+            </summary>
+            <param name="isReturnExceptionStackTraceInErrorDetail">If true, when method body throws exception send to client exception.ToString message. It is useful for debugging.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MagicOnion.Server.MagicOnionEngine.BuildServerServiceDefinition(MagicOnion.Server.MagicOnionOptions)">
+            <summary>
+            Search MagicOnion service from all assemblies.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Server.MagicOnionEngine.BuildServerServiceDefinition(System.Reflection.Assembly[],MagicOnion.Server.MagicOnionOptions)">
+            <summary>
+            Search MagicOnion service from target assemblies. ex: new[]{ typeof(Startup).GetTypeInfo().Assembly }
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Server.MagicOnionFilterAttribute.#ctor(System.Func{MagicOnion.Server.ServiceContext,System.Threading.Tasks.ValueTask})">
+            <summary>
+            This constructor used by MagicOnionEngine when register handler.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.Server.MagicOnionOptions.FormatterResolver">
+            <summary>
+            MessagePack serialization resolver. Default is used ambient default(MessagePackSerialzier.Default).
+            </summary>
+        </member>
+        <member name="P:MagicOnion.Server.MagicOnionOptions.IsReturnExceptionStackTraceInErrorDetail">
+            <summary>
+            If true, MagicOnion handles exception ownself and send to message. If false, propagate to gRPC engine. Default is false.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.Server.MagicOnionOptions.MagicOnionLogger">
+            <summary>
+            Set the diagnostics info logger.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.Server.MagicOnionOptions.DisableEmbeddedService">
+            <summary>
+            Disable embedded service(ex:heartbeat), default is false.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.Server.MagicOnionOptions.EnableCurrentContext">
+            <summary>
+            Enable ServiceContext.Current option by AsyncLocal.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.Server.MagicOnionOptions.GlobalFilters">
+            <summary>
+            Global MagicOnion filters.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.Server.MagicOnionOptions.GlobalStreamingHubFilters">
+            <summary>
+            Global StreamingHub filters.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.Server.MagicOnionOptions.DefaultGroupRepositoryFactory">
+            <summary>
+            Default GroupRepository factory for StreamingHub.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.Server.MagicOnionOptions.ServiceLocator">
+            <summary>
+            Add the extra typed option.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Server.MagicOnionOptions.#ctor(System.Boolean)">
+            <summary>
+            Constructor can handle only error detail. If you want to set the other options, you can use object initializer. 
+            </summary>
+            <param name="isReturnExceptionStackTraceInErrorDetail">true, when method body throws exception send to client exception.ToString message. It is useful for debugging. Default is false.</param>
+        </member>
+        <member name="P:MagicOnion.Server.ServiceBase`1.Logger">
+            <summary>
+            Get Grpc Logger.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.Server.ServiceContext.Current">
+            <summary>
+            Get Current ServiceContext. This property requires to MagicOnionOptions.Enable
+            </summary>
+        </member>
+        <member name="P:MagicOnion.Server.ServiceContext.Items">
+            <summary>Object storage per invoke.</summary>
+        </member>
+        <member name="P:MagicOnion.Server.ServiceContext.AttributeLookup">
+            <summary>Cached Attributes both service and method.</summary>
+        </member>
+        <member name="P:MagicOnion.Server.ServiceContext.CallContext">
+            <summary>Raw gRPC Context.</summary>
+        </member>
+        <member name="M:MagicOnion.Server.ServiceContext.ChangeFormatterResolver(MessagePack.IFormatterResolver)">
+            <summary>
+            modify request/response resolver in this context.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Server.ServiceContext.ForceSetRawUnaryResult(System.Byte[])">
+            <summary>
+            Unsafe optimize option, ignore serialization process of LZ4MessagePackSerializer. This is useful for cache result.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.Server.DuplexStreamingContext`2.Current">
+            <summary>IAsyncStreamReader Methods.</summary>
+        </member>
+        <member name="M:MagicOnion.Server.DuplexStreamingContext`2.MoveNext(System.Threading.CancellationToken)">
+            <summary>IAsyncStreamReader Methods.</summary>
+        </member>
+        <member name="M:MagicOnion.Server.DuplexStreamingContext`2.Dispose">
+            <summary>IAsyncStreamReader Methods.</summary>
+        </member>
+        <member name="P:MagicOnion.Server.DuplexStreamingContext`2.WriteOptions">
+            <summary>
+            IServerStreamWriter Methods.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Server.DuplexStreamingContext`2.WriteAsync(`1)">
+            <summary>
+            IServerStreamWriter Methods.
+            </summary>
+        </member>
+        <member name="T:MagicOnion.UnaryResult`1">
+            <summary>
+            Wrapped AsyncUnaryCall.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.UnaryResult`1.ResponseAsync">
+            <summary>
+            Asynchronous call result.
+            </summary>
+        </member>
+        <member name="P:MagicOnion.UnaryResult`1.ResponseHeadersAsync">
+            <summary>
+            Asynchronous access to response headers.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.UnaryResult`1.GetAwaiter">
+            <summary>
+            Allows awaiting this object directly.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.UnaryResult`1.GetStatus">
+            <summary>
+            Gets the call status if the call has already finished.
+            Throws InvalidOperationException otherwise.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.UnaryResult`1.GetTrailers">
+            <summary>
+            Gets the call trailing metadata if the call has already finished.
+            Throws InvalidOperationException otherwise.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.UnaryResult`1.Dispose">
+            <summary>
+            Provides means to cleanup after the call.
+            If the call has already finished normally (request stream has been completed and call result has been received), doesn't do anything.
+            Otherwise, requests cancellation of the call which should terminate all pending async operations associated with the call.
+            As a result, all resources being used by the call should be released eventually.
+            </summary>
+            <remarks>
+            Normally, there is no need for you to dispose the call unless you want to utilize the
+            "Cancel" semantics of invoking <c>Dispose</c>.
+            </remarks>
+        </member>
+        <member name="T:MagicOnion.Utils.ILGeneratorExtensions">
+            <summary>
+            Provides optimized generation code and helpers.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Utils.ILGeneratorExtensions.EmitLdloc(System.Reflection.Emit.ILGenerator,System.Int32)">
+            <summary>
+            Loads the local variable at a specific index onto the evaluation stack.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Utils.ILGeneratorExtensions.EmitStloc(System.Reflection.Emit.ILGenerator,System.Int32)">
+            <summary>
+            Pops the current value from the top of the evaluation stack and stores it in a the local variable list at a specified index.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Utils.ILGeneratorExtensions.EmitLdloca(System.Reflection.Emit.ILGenerator,System.Int32)">
+            <summary>
+            Loads the address of the local variable at a specific index onto the evaluation statck.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Utils.ILGeneratorExtensions.EmitLdc_I4(System.Reflection.Emit.ILGenerator,System.Int32)">
+            <summary>
+            Pushes a supplied value of type int32 onto the evaluation stack as an int32.
+            </summary>
+        </member>
+        <member name="M:MagicOnion.Utils.ILGeneratorExtensions.EmitPop(System.Reflection.Emit.ILGenerator,System.Int32)">
+            <summary>
+            Helper for Pop op.
+            </summary>
+        </member>
+    </members>
+</doc>
