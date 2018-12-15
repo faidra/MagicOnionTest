@@ -3,7 +3,7 @@ using MagicOnion;
 using System.Threading.Tasks;
 
 [MessagePackObject]
-public struct ChatRoomMember
+public class ChatRoomMember
 {
     [Key(0)]
     public int Id { get; set; }
