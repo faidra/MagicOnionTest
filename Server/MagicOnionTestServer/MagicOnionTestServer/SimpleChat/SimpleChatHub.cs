@@ -38,5 +38,11 @@ namespace MagicOnionTestServer.SimpleChat
         {
             Broadcast(_room).OnSpeak(_self, message);
         }
+
+        protected override ValueTask OnDisconnected()
+        {
+            if (_self != null) Broadcast(_room).OnLeave(_self.Id);
+            return base.OnDisconnected();
+        }
     }
 }
